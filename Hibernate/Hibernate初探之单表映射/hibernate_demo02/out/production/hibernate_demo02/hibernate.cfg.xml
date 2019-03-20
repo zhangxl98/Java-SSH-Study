@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        <!--"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">-->
+
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- 连接数据库的基本参数 -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate_imooc?useUnicode=true&amp;characterEncoding=utf8</property>
+
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">123456</property>
+        <!-- 配置Hibernate的方言 -->
+        <!--<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <!-- 可选配置================ -->
+        <!-- 打印 SQL -->
+        <property name="hibernate.show_sql">true</property>
+        <!-- 格式化 SQL -->
+        <property name="hibernate.format_sql">true</property>
+        <!-- 在打印的 SQL 语句前加上数据库的前缀 -->
+        <property name="hibernate.default_schema">hibernate_imooc</property>
+
+
+        <!-- 如果使用 getCurrentSession() 方法 来获得 session 对象，需要进行配置 -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!--  create 每次重新生成表 -->
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- update 保留原有数据 -->
+        <!--<property name="hbm2ddl.auto">update</property>-->
+
+
+        <mapping class="com.imooc.dao.StudentsEntity"/>
+        <mapping resource="com/imooc/dao/StudentsEntity.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>
